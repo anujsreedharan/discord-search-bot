@@ -1,10 +1,7 @@
-require("dotenv").config();
-const Discord = require("discord.js");
 
+const Discord = require("discord.js");
 const character = require("./character");
 const media = require("./media");
-const staff = require("./staff");
-const user = require("./user");
 const studio = require("./studio");
 
 const client = new Discord.Client();
@@ -12,7 +9,7 @@ const client = new Discord.Client();
 const deleteViaReaction = require("./deleteViaReaction");
 
 // Use exclamation mark as the default prefix
-const prefix = process.env.PREFIX || "!";
+const prefix = process.env.PREFIX || ",";
 
 client.on("ready", () => {
     // This event will run if the bot starts, and logs in, successfully.
@@ -52,8 +49,8 @@ client.on("message", async message => {
     let response = null;
 
     switch (command) {
-        case "help":
-            response = help;
+        case "ani":
+            response = ani;
             break;
 
         case "a":
@@ -107,7 +104,7 @@ client.on("message", async message => {
         }
     });
 
-    if (command !== "help") {
+    if (command !== "ani") {
         deleteViaReaction(
             message,
             await replyEmbed,
@@ -117,17 +114,14 @@ client.on("message", async message => {
     }
 });
 
-const help = {
+const ani = {
     title: "Commands",
     description: `
-Search anime: !a or !anime <anime title>
-Search manga: !m or !manga <manga title>
-Search character: !c or !character <character name>
-Search staff: !p or !person or !staff <staff name>
-Search studio: !s or !studio <studio name>
-Search user: !u or !user <user name>
-
-GitHub: https://github.com/joshstar/AniList-Discord-Bot`
+Search anime: ,a or ,anime <anime title>
+Search manga: ,m or ,manga <manga title>
+Search character: ,c or ,character <character name>
+Search studio: ,s or ,studio <studio name>
+`
 };
 
 client.login(process.env.TOKEN);
