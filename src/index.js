@@ -52,8 +52,8 @@ client.on("message", async message => {
     let response = null;
 
     switch (command) {
-        case "help":
-            response = help;
+        case "ani":
+            response = ani;
             break;
 
         case "a":
@@ -117,7 +117,7 @@ client.on("message", async message => {
     }
 });
 
-const help = {
+const ani = {
     title: "Commands",
     description: `
 Search anime: ,a or ,anime <anime title>
