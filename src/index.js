@@ -12,7 +12,7 @@ const client = new Discord.Client();
 const deleteViaReaction = require("./deleteViaReaction");
 
 // Use exclamation mark as the default prefix
-const prefix = process.env.PREFIX || ",";
+const prefix = ",";
 
 client.on("ready", () => {
     // This event will run if the bot starts, and logs in, successfully.
@@ -107,7 +107,7 @@ client.on("message", async message => {
         }
     });
 
-    if (command !== "help") {
+    if (command !== "ani") {
         deleteViaReaction(
             message,
             await replyEmbed,
@@ -124,7 +124,7 @@ Search anime: ,a or ,anime <anime title>
 Search manga: ,m or ,manga <manga title>
 Search character: ,c or ,character <character name>
 Search studio: ,s or ,studio <studio name>
-Search user: ,u or ,user <user name>
+Search user: ,u or ,user <user name>`
 
 };
 
