@@ -1,7 +1,10 @@
-
+require("dotenv").config();
 const Discord = require("discord.js");
+
 const character = require("./character");
 const media = require("./media");
+const staff = require("./staff");
+const user = require("./user");
 const studio = require("./studio");
 
 const client = new Discord.Client();
@@ -49,8 +52,8 @@ client.on("message", async message => {
     let response = null;
 
     switch (command) {
-        case "ani":
-            response = ani;
+        case "help":
+            response = help;
             break;
 
         case "a":
@@ -104,7 +107,7 @@ client.on("message", async message => {
         }
     });
 
-    if (command !== "ani") {
+    if (command !== "help") {
         deleteViaReaction(
             message,
             await replyEmbed,
@@ -114,14 +117,15 @@ client.on("message", async message => {
     }
 });
 
-const ani = {
+const help = {
     title: "Commands",
     description: `
 Search anime: ,a or ,anime <anime title>
 Search manga: ,m or ,manga <manga title>
 Search character: ,c or ,character <character name>
 Search studio: ,s or ,studio <studio name>
-`
+Search user: ,u or ,user <user name>
+
 };
 
 client.login(process.env.TOKEN);
